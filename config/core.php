@@ -33,6 +33,7 @@ return [
 
     'roles' => [
         'super-admin',
+        'student'
     ],
 
     // format - action-resource(s/es)

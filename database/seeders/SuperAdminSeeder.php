@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\RoleEnum;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -17,7 +18,7 @@ class SuperAdminSeeder extends Seeder
     public function run()
     {
         $this->command->warn('  Creating and super-admin account');
-        $user = User::updateOrCreate(['email' => 'superadmin@onenex.co'], ['name' => 'Super Admin', 'password' => 'password']);
+        $user = User::updateOrCreate(['email' => env('ADMIN_EMAIL')], ['name' => 'Admin', env('ADMIN_PASSWORD') => 'password']);
 
         $this->command->warn('  Attaching super-admin role to created user');
         $user->syncRoles([RoleEnum::SUPER_ADMIN->value]);

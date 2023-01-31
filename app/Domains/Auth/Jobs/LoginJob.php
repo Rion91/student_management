@@ -9,15 +9,16 @@ use Lucid\Units\Job;
 
 class LoginJob extends Job
 {
+    private array $payload;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(string $email, string $password)
+    public function __construct($payload)
     {
-        $this->email = $email;
-        $this->password = $password;
+        $this->payload = $payload;
     }
 
     /**
@@ -30,12 +31,12 @@ class LoginJob extends Job
     public function handle()
     {
         try {
-            $user = User::where('email', $this->email)->firstOrFail();
+            $user = User::where('email', $this->payload['email'])->firstOrFail();
         } catch (ModelNotFoundException $_) {
             throw new UnauthorizedException('Wrong Credentials');
         }
 
-        if (\Hash::check($this->password, $user->password)) {
+        if (\Hash::check($this->payload['password'], $user->password)) {
             return [
                 'access_token' => $user->createToken('Authentication Token')->accessToken,
                 'user' => $user->makeHidden(['permissions', 'roles'])->append(['allowed_permissions']),

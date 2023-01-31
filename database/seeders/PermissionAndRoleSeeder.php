@@ -51,8 +51,5 @@ class PermissionAndRoleSeeder extends Seeder
         $role = Role::where('name', RoleEnum::SUPER_ADMIN->value)->firstOrFail();
         $role->syncPermissions(Permission::all());
 
-        Role::whereName(RoleEnum::SCSC_MEMBER->value)->firstOrFail()->givePermissionTo([
-            PermissionEnum::MANAGE_SCSC_PROFILE->value,
-        ]);
     }
 }
