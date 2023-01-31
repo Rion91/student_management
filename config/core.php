@@ -28,12 +28,18 @@ return [
             'force_required' => true,
             'active' => true,
         ],
+        [
+            'provider' => \App\Services\Students\Providers\StudentsServiceProvider::class,
+            'description' => 'Students Service',
+            'force_required' => true,
+            'active' => true,
+        ],
 
     ],
 
     'roles' => [
         'super-admin',
-        'student'
+        'student',
     ],
 
     // format - action-resource(s/es)

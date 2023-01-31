@@ -3,11 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Data\Models\Student;
 use App\Helpers\StringHelper;
 use App\Traits\BasicAudit;
 use App\Traits\SnowflakeID;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -50,6 +52,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = ['avatar'];
+
     protected function allowedPermissions(): Attribute
     {
         return Attribute::make(
@@ -70,5 +74,15 @@ class User extends Authenticatable
                 $user->password = Hash::make($user->password);
             }
         });
+    }
+
+    public function getAvatarAttribute()
+    {
+        return $this->avatar ? $this->avatar->url : 'https://ui-avatars.com/api/?name='.$this->name;
+    }
+
+    public function students(): HasMany
+    {
+        return $this->hasMany(Student::class);
     }
 }

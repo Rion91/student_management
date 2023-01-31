@@ -14,6 +14,6 @@ enum ValidatorEnum: string
         ];
     }
 
-    case IMAGE = "image|mimes:jpeg,png,jpg,gif,svg|max:20480";
-    case DOCUMENT = "file|mimes:ppt,pptx,doc,docx,pdf,xls,xlsx|max:204800";
+    case IMAGE = 'image|mimes:jpeg,png,jpg,gif,svg|max:20480';
+    case DOCUMENT = 'file|mimes:ppt,pptx,doc,docx,pdf,xls,xlsx|max:204800';
 }

@@ -76,11 +76,14 @@ class Handler extends ExceptionHandler
                 return JsonResponder::notFound('The resource is not found');
 
             case UnauthorizedException::class:
-                return JsonResponder::success("Wrong Credentials");
+                return JsonResponder::success('Wrong Credentials');
 
             case PermissionAuthorizedException::class:
-                if($message === "User is not logged in.") return JsonResponder::unauthorized();
-                return JsonResponder::forbidden("User does not have the right permissions");
+                if ($message === 'User is not logged in.') {
+                    return JsonResponder::unauthorized();
+                }
+
+                return JsonResponder::forbidden('User does not have the right permissions');
 
             case AuthorizationException::class:
                 return JsonResponder::unauthorized($message);
@@ -93,6 +96,7 @@ class Handler extends ExceptionHandler
 
             default:
                 info($exception);
+
                 return JsonResponder::internalServerError(data: $this->getInternalServerErrorDetail($exception));
         }
     }

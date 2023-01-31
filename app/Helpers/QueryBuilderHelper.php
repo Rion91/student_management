@@ -79,6 +79,13 @@ class QueryBuilderHelper
      */
     public static function purifyPaginationQuery(Builder $builder, int|null $perPage, int|null $page): mixed
     {
+        if ($perPage == 'ALL') {
+            return $builder->when(
+                $perPage === 'ALL',
+                fn (Builder $builder) => $builder->get()
+            );
+        }
+
         return $builder->when($page && $perPage,
             fn (Builder $builder) => $builder->paginate(perPage: $perPage, page: $page)->appends(app('request')->query()),
             fn (Builder $builder) => $builder->get()
