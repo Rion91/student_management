@@ -78,7 +78,7 @@ class User extends Authenticatable
 
     public function getAvatarAttribute()
     {
-        return $this->avatar ? $this->avatar->url : 'https://ui-avatars.com/api/?name='.$this->name;
+//        return $this->avatar ? $this->avatar->url : 'https://ui-avatars.com/api/?name='.$this->name;
     }
 
     public function students(): HasMany

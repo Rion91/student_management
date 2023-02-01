@@ -77,7 +77,7 @@ class QueryBuilderHelper
      *
      * @author naythukhant644@gmail.com
      */
-    public static function purifyPaginationQuery(Builder $builder, int|null $perPage, int|null $page): mixed
+    public static function purifyPaginationQuery(Builder $builder, string|int|null $perPage, int|null $page): mixed
     {
         if ($perPage == 'ALL') {
             return $builder->when(

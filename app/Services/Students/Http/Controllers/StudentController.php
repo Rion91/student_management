@@ -3,6 +3,7 @@
 namespace App\Services\Students\Http\Controllers;
 
 use App\Services\Students\Features\IndexStudentFeature;
+use App\Services\Students\Features\StoreStudentFeature;
 use Lucid\Units\Controller;
 
 class StudentController extends Controller
@@ -28,10 +29,14 @@ class StudentController extends Controller
      * @group Students
      * @unauthenticated
      *
-     * @bodyParam mobile_number string required The mobile number for register student. Example: 09 987654321
-     * @bodyParam date_of_birth date required The date of birth for register student. Example: 9-11-2000
+     * @bodyParam name string required The name for register student. Example: Mg Min
+     * @bodyParam email string required The email for register student. Example: example@gmail.com
+     * @bodyParam password string required The password for register student. Example: password
+     *
+     * @bodyParam mobile_number string required The mobile number for register student. Example: 09987654321
+     * @bodyParam date_of_birth date required The date of birth for register student. Example, yyyy-mm-dd Example: 2000-11-9
      * @bodyParam identity_type enum required The identity type for register student. Example, NRC and PASSPORT Example: NRC
-     * @bodyParam identity_number string required The identity number for register student. Example: 123654
+     * @bodyParam identity_number string required The identity number for register student. Example: 321654
      * @bodyParam gender string required The gender for register student. Example, MALE, FEMALE and PREFER NOT TO SAY Example: MALE
      * @bodyParam nationality string required The nationality for register student. Example, Myanmar Example: Myanmar
      * @bodyParam academic_field string required The academic field for register student. Example: HEALTH Science
@@ -41,5 +46,6 @@ class StudentController extends Controller
      */
     public function store()
     {
+        return $this->serve(StoreStudentFeature::class);
     }
 }
