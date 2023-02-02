@@ -14,8 +14,8 @@ class StudentController extends Controller
      * @group Students
      *
      * @header Authorization string required The authorization token of the user. Example: 'Bearer {token}',
-     * @bodyParam per_page string required The per_page of the list. Example, 5,10,50,100,ALL
-     * @bodyParam page integer required The page of the list. Example, 1,2,3,4,5
+     * @bodyParam per_page string required The per_page of the list. Example, 5,10,50,100,ALL Example: ALL
+     * @bodyParam page integer required The page of the list. Example, 1,2,3,4,5 Example: 1
      * @bodyParam search string required The search character. Example, Mg
      */
     public function index()
