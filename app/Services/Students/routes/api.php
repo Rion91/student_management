@@ -4,7 +4,7 @@
 use App\Services\Students\Http\Controllers\StudentController;
 
 Route::group(['prefix' => 'students'], function () {
-    Route::middleware('auth:api')->group(function () {
+    Route::middleware(['auth:api', 'paginator'])->group(function () {
         Route::get('/', [StudentController::class, 'index']);
     });
 
