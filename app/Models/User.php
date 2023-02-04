@@ -7,6 +7,7 @@ use App\Data\Models\File;
 use App\Data\Models\Student;
 use App\Helpers\StringHelper;
 use App\Traits\BasicAudit;
+use App\Traits\HasAttachable;
 use App\Traits\SnowflakeID;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +22,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use SnowflakeID, HasApiTokens, HasFactory, Notifiable, HasRoles, HasPermissions, SoftDeletes, BasicAudit;
+    use SnowflakeID, HasApiTokens, HasFactory, Notifiable, HasRoles, HasPermissions, SoftDeletes, BasicAudit, HasAttachable;
 
     /**
      * The attributes that are mass assignable.
