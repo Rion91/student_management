@@ -30,9 +30,9 @@ class StoreStudentRequest extends FormRequest
             'password' => ValidatorEnum::PASSWORD_RULE(),
 
             'date_of_birth' => 'required',
-            'mobile_number' => 'required|string|max:11',
+            'mobile_number' => ['required', 'string', 'max:11', 'min:11', 'unique:students'],
             'identity_type' => 'required',
-            'identity_number' => 'required',
+            'identity_number' => 'required|unique:students',
             'gender' => 'nullable',
             'nationality' => 'nullable|string',
             'academic_field' => 'required',

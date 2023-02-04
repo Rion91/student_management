@@ -3,6 +3,7 @@
 namespace App\Domains\Students\Jobs;
 
 use App\Data\Models\Student;
+use App\Helpers\ImageSave;
 use Lucid\Units\Job;
 
 class StoreStudentJob extends Job
@@ -26,6 +27,7 @@ class StoreStudentJob extends Job
      */
     public function handle(): object
     {
+        //ImageSave::avatarSave($student->user , $this->payload['avatar']);
         return Student::create($this->payload);
     }
 }

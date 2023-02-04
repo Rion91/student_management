@@ -43,6 +43,7 @@ class StudentController extends Controller
      * @bodyParam contact_person string optional The contact person field for register student. Example: mom
      * @bodyParam contact_number string optional The contact number field for register student. Example: 09123456789
      * @bodyParam address string required The address field for register student. Example: No 1, test street, Yangon, Myanmar
+     * @bodyParam avatar file optional The image for register student.
      */
     public function store()
     {

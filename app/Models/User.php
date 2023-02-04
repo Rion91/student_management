@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Data\Models\File;
 use App\Data\Models\Student;
 use App\Helpers\StringHelper;
 use App\Traits\BasicAudit;
@@ -52,7 +53,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['avatar'];
+    /*protected $attachOne = [
+        'avatar' => File::class,
+    ];
+    protected $appends = ['avatar'];*/
 
     protected function allowedPermissions(): Attribute
     {
@@ -76,10 +80,10 @@ class User extends Authenticatable
         });
     }
 
-    public function getAvatarAttribute()
+    /*public function getAvatarAttribute()
     {
-//        return $this->avatar ? $this->avatar->url : 'https://ui-avatars.com/api/?name='.$this->name;
-    }
+        return $this->avatar ? $this->avatar->url : 'https://ui-avatars.com/api/?name='.$this->name;
+    }*/
 
     public function students(): HasMany
     {
