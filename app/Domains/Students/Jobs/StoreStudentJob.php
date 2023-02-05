@@ -27,7 +27,9 @@ class StoreStudentJob extends Job
      */
     public function handle(): object
     {
-        //ImageSave::avatarSave($student->user , $this->payload['avatar']);
-        return Student::create($this->payload);
+        $student = Student::create($this->payload);
+        ImageSave::avatarSave($student->user, $this->payload['avatar']);
+
+        return $student;
     }
 }

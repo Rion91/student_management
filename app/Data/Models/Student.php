@@ -30,7 +30,6 @@ class Student extends Model
         'contact_number',
         'address',
         'status',
-        'avatar',
     ];
 
     public function user(): BelongsTo
@@ -38,11 +37,10 @@ class Student extends Model
         return $this->belongsTo(User::class);
     }
 
-    /*protected function avatar(): Attribute
+    protected function avatar(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => optional($this->user)->avatar->url,
-            set: fn ($value) => $value ? $value->url : 'https://ui-avatars.com/api/?name='.$this->user->name
+            get: fn ($value) => optional($this->user)->avatar->url ?? 'https://ui-avatars.com/api/?name='.$this->user->name,
         );
-    }*/
+    }
 }

@@ -31,7 +31,6 @@ return new class extends Migration
             $table->string('contact_number')->nullable();
             $table->longText('address');
             $table->enum('status', collect(UserStatusEnum::class)->enum()->values());
-            $table->string('avatar')->nullable();
             $table->auditColumns();
         });
     }

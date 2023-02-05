@@ -33,6 +33,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
     ];
 
     /**
@@ -54,10 +55,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /*protected $attachOne = [
+    protected $attachOne = [
         'avatar' => File::class,
     ];
-    protected $appends = ['avatar'];*/
 
     protected function allowedPermissions(): Attribute
     {
@@ -81,10 +81,12 @@ class User extends Authenticatable
         });
     }
 
-    /*public function getAvatarAttribute()
+    protected function avatar(): Attribute
     {
-        return $this->avatar ? $this->avatar->url : 'https://ui-avatars.com/api/?name='.$this->name;
-    }*/
+        return Attribute::make(
+            get: fn ($value) => $this->avatar->url ?? 'https://ui-avatars.com/api/?name='.$this->name,
+        );
+    }
 
     public function students(): HasOne
     {
