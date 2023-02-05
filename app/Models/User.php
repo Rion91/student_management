@@ -11,7 +11,7 @@ use App\Traits\HasAttachable;
 use App\Traits\SnowflakeID;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -86,8 +86,8 @@ class User extends Authenticatable
         return $this->avatar ? $this->avatar->url : 'https://ui-avatars.com/api/?name='.$this->name;
     }*/
 
-    public function students(): HasMany
+    public function students(): HasOne
     {
-        return $this->hasMany(Student::class);
+        return $this->hasOne(Student::class);
     }
 }

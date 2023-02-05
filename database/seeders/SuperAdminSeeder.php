@@ -16,7 +16,9 @@ class SuperAdminSeeder extends Seeder
     public function run()
     {
         $this->command->warn('  Creating and super-admin account');
-        $user = User::updateOrCreate(['email' => env('ADMIN_EMAIL')], ['name' => 'Admin', env('ADMIN_PASSWORD') => 'password']);
+        $user = User::updateOrCreate(
+            ['email' => config('onenex.admin_email')],
+            ['name' => 'Admin', 'password' => config('onenex.admin_password')]);
 
         $this->command->warn('  Attaching super-admin role to created user');
         $user->syncRoles([RoleEnum::SUPER_ADMIN->value]);

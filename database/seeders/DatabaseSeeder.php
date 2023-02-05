@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Data\Models\Student;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -21,8 +22,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionAndRoleSeeder::class,
             SuperAdminSeeder::class,
+            StudentSeeder::class,
         ]);
 
-        //User::factory(100)->create();
+//        User::factory(10)->create();
+//        Student::factory()->count(10)->create();
     }
 }
