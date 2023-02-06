@@ -14,6 +14,7 @@ class StudentController extends Controller
      * @group Students
      *
      * @header Authorization string required The authorization token of the user. Example: 'Bearer {token}',
+     *
      * @bodyParam per_page string required The per_page of the list. Example, 5,10,50,100,ALL Example: ALL
      * @bodyParam page integer required The page of the list. Example, 1,2,3,4,5 Example: 1
      * @bodyParam search string required The search character. Example, Mg
@@ -27,12 +28,12 @@ class StudentController extends Controller
      * Store Student
      *
      * @group Students
+     *
      * @unauthenticated
      *
      * @bodyParam name string required The name for register student. Example: Mg Min
      * @bodyParam email string required The email for register student. Example: example@gmail.com
      * @bodyParam password string required The password for register student. Example: password
-     *
      * @bodyParam mobile_number string required The mobile number for register student. Example: 09987654321
      * @bodyParam date_of_birth date required The date of birth for register student. Example, yyyy-mm-dd Example: 2000-11-9
      * @bodyParam identity_type enum required The identity type for register student. Example, NRC and PASSPORT Example: NRC

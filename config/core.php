@@ -50,7 +50,19 @@ return [
         'show-application-service',
         'update-application-service',
 
+        'index-student',
+        'show-student',
+        'update-student',
+        'delete-student',
+
         'manage-roles',
         'manage-permissions',
+    ],
+
+    'student-permissions' => [
+        'index-student',
+        'show-student',
+        'update-student',
+        'delete-student',
     ],
 ];

@@ -19,7 +19,7 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->snowflakeIdAndPrimary();
-            $table->snowflakeId('user_id')->constrained();
+            $table->snowflakeId('user_id');
             $table->date('date_of_birth');
             $table->string('mobile_number');
             $table->enum('identity_type', collect(StudentIdentityTypeEnum::class)->enum()->values());
