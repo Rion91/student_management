@@ -9,7 +9,7 @@ enum PermissionEnum: string
     case UPDATE_APPLICATION_SERVICE = 'update-application-services';
 
     case INDEX_STUDENT = 'index-student';
-    case SHOW_STUDENT = 'show-student';
+    case SHOW_STUDENT = 'detail-student';
     case UPDATE_STUDENT = 'update-student';
     case DELETE_STUDENT = 'delete-student';
 }

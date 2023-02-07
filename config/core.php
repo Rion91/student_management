@@ -51,7 +51,7 @@ return [
         'update-application-service',
 
         'index-student',
-        'show-student',
+        'detail-student',
         'update-student',
         'delete-student',
 
@@ -61,7 +61,7 @@ return [
 
     'student-permissions' => [
         'index-student',
-        'show-student',
+        'detail-student',
         'update-student',
         'delete-student',
     ],

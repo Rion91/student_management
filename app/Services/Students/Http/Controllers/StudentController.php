@@ -3,6 +3,7 @@
 namespace App\Services\Students\Http\Controllers;
 
 use App\Services\Students\Features\IndexStudentFeature;
+use App\Services\Students\Features\ShowStudentFeature;
 use App\Services\Students\Features\StoreStudentFeature;
 use Lucid\Units\Controller;
 
@@ -49,5 +50,19 @@ class StudentController extends Controller
     public function store()
     {
         return $this->serve(StoreStudentFeature::class);
+    }
+
+    /**
+     * Show Student
+     *
+     * @group Students
+     *
+     * @header Authorization string required The authorization token of the user. Example: 'Bearer {token}',
+     *
+     * @urlParam id required The id of the Student.
+     */
+    public function show($studentId)
+    {
+        return $this->serve(ShowStudentFeature::class, ['studentId' => $studentId]);
     }
 }
