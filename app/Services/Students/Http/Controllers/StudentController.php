@@ -2,6 +2,7 @@
 
 namespace App\Services\Students\Http\Controllers;
 
+use App\Services\Students\Features\DeleteStudentFeature;
 use App\Services\Students\Features\IndexStudentFeature;
 use App\Services\Students\Features\ShowStudentFeature;
 use App\Services\Students\Features\StoreStudentFeature;
@@ -64,5 +65,19 @@ class StudentController extends Controller
     public function show($studentId)
     {
         return $this->serve(ShowStudentFeature::class, ['studentId' => $studentId]);
+    }
+
+    /**
+     * Delete Student
+     *
+     * @group Students
+     *
+     * @header Authorization string required The authorization token of the user. Example: 'Bearer {token}',
+     *
+     * @urlParam id required The id of the Student.
+     */
+    public function destroy($studentId)
+    {
+        return $this->serve(DeleteStudentFeature::class, ['studentId' => $studentId]);
     }
 }
