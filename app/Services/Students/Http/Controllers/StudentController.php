@@ -6,6 +6,7 @@ use App\Services\Students\Features\DeleteStudentFeature;
 use App\Services\Students\Features\IndexStudentFeature;
 use App\Services\Students\Features\ShowStudentFeature;
 use App\Services\Students\Features\StoreStudentFeature;
+use App\Services\Students\Features\UpdateStudentFeature;
 use Lucid\Units\Controller;
 
 class StudentController extends Controller
@@ -79,5 +80,19 @@ class StudentController extends Controller
     public function destroy($studentId)
     {
         return $this->serve(DeleteStudentFeature::class, ['studentId' => $studentId]);
+    }
+
+    /**
+     * Update Student
+     *
+     * @group Students
+     *
+     * @header Authorization string required The authorization token of the user. Example: 'Bearer {token}',
+     *
+     * @urlParam id required The id of the Student.
+     */
+    public function update($studentId)
+    {
+        return $this->serve(UpdateStudentFeature::class, ['studentId' => $studentId]);
     }
 }

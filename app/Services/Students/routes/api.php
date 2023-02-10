@@ -7,7 +7,7 @@ Route::group(['prefix' => 'students'], function () {
     Route::get('/', [StudentController::class, 'index'])->middleware('paginator')->middleware('permission:index-student');
     Route::get('/{studentId}', [StudentController::class, 'show'])->middleware('permission:detail-student');
     Route::delete('/{studentId}', [StudentController::class, 'destroy'])->middleware('permission:delete-student');
-
+    Route::put('/{studentId}', [StudentController::class, 'update'])->middleware('permission:update-student');
     //No authentication is required to register students.
     Route::post('/store', [StudentController::class, 'store']);
 });
