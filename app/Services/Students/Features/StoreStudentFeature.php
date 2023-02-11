@@ -10,8 +10,6 @@ use Lucid\Units\Feature;
 
 class StoreStudentFeature extends Feature
 {
-    const CONST_ACTIVE = 'ACTIVE';
-
     public function handle(StoreStudentRequest $request): JsonResponse
     {
         $response = $this->run(StoreStudentOperation::class,
