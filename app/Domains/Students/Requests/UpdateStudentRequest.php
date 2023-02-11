@@ -2,7 +2,6 @@
 
 namespace App\Domains\Students\Requests;
 
-use App\Data\Models\Student;
 use App\Enums\ValidatorEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,17 +24,15 @@ class UpdateStudentRequest extends FormRequest
      */
     public function rules()
     {
-        $userId = Student::where('id', $this->id)->first();
-
         return [
             'name' => ['required', 'string', 'max:50'],
-            'email' => 'string|required|email|unique:users,email,'.$userId->user_id,
+            'email' => 'string|required|email',
             'password' => ValidatorEnum::PASSWORD_RULE(),
 
             'date_of_birth' => 'required',
-            'mobile_number' => 'string|required|max:11|min:11|mobile_number|unique:students,mobile_number,'.$this->id,
+            'mobile_number' => 'string|required|max:11|min:11',
             'identity_type' => 'required',
-            'identity_number' => 'required|identity_number|unique:students,identity_number'.$this->id,
+            'identity_number' => 'required',
             'gender' => 'nullable',
             'nationality' => 'nullable|string',
             'academic_field' => 'required',

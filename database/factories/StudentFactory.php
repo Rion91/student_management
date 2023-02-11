@@ -8,9 +8,9 @@ use App\Enums\GenderEnum;
 use App\Enums\RoleEnum;
 use App\Enums\StudentIdentityTypeEnum;
 use App\Enums\UserStatusEnum;
+use App\Helpers\NumberHelper;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -29,9 +29,9 @@ class StudentFactory extends Factory
         return [
             'user_id' => User::factory()->create()->syncRoles([RoleEnum::STUDENT->value]),
             'date_of_birth' => fake()->date,
-            'mobile_number' => fake()->phoneNumber,
+            'mobile_number' => NumberHelper::getRandomNumber(11),
             'identity_type' => fake()->randomElement(collect(StudentIdentityTypeEnum::class)->enum()->values()),
-            'identity_number' => Str::random(6),
+            'identity_number' => NumberHelper::getRandomNumber(),
             'gender' => fake()->randomElement(collect(GenderEnum::class)->enum()->values()),
             'nationality' => fake()->country,
             'academic_field' => fake()->randomElement(collect(AcademicFieldMajor::class)->enum()->values()),
