@@ -28,6 +28,20 @@ class StudentController extends Controller
     }
 
     /**
+     * Show Student
+     *
+     * @group Students
+     *
+     * @header Authorization string required The authorization token of the user. Example: 'Bearer {token}',
+     *
+     * @urlParam id required The id of the Student.
+     */
+    public function show($student)
+    {
+        return $this->serve(ShowStudentFeature::class, ['studentId' => $student]);
+    }
+
+    /**
      * Store Student
      *
      * @group Students
@@ -55,34 +69,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Show Student
-     *
-     * @group Students
-     *
-     * @header Authorization string required The authorization token of the user. Example: 'Bearer {token}',
-     *
-     * @urlParam id required The id of the Student.
-     */
-    public function show($studentId)
-    {
-        return $this->serve(ShowStudentFeature::class, ['studentId' => $studentId]);
-    }
-
-    /**
-     * Delete Student
-     *
-     * @group Students
-     *
-     * @header Authorization string required The authorization token of the user. Example: 'Bearer {token}',
-     *
-     * @urlParam id required The id of the Student.
-     */
-    public function destroy($studentId)
-    {
-        return $this->serve(DeleteStudentFeature::class, ['studentId' => $studentId]);
-    }
-
-    /**
      * Update Student
      *
      * @group Students
@@ -106,8 +92,22 @@ class StudentController extends Controller
      * @bodyParam address string required The address field for register student. Example: No 1, test street, Yangon, Myanmar
      * @bodyParam avatar file optional The image for register student.
      */
-    public function update($studentId)
+    public function update($student)
     {
-        return $this->serve(UpdateStudentFeature::class, ['studentId' => $studentId]);
+        return $this->serve(UpdateStudentFeature::class, ['studentId' => $student]);
+    }
+
+    /**
+     * Delete Student
+     *
+     * @group Students
+     *
+     * @header Authorization string required The authorization token of the user. Example: 'Bearer {token}',
+     *
+     * @urlParam id required The id of the Student.
+     */
+    public function destroy($student)
+    {
+        return $this->serve(DeleteStudentFeature::class, ['studentId' => $student]);
     }
 }

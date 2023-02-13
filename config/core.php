@@ -60,7 +60,6 @@ return [
     ],
 
     'student-permissions' => [
-        'index-student',
         'detail-student',
         'update-student',
         'delete-student',

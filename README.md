@@ -3,15 +3,15 @@
 
 ### INSTALLATION
 ```shell
-git clone https://github.com/onenextech/Laravel-Lucid-Architecutre-Stater-Kit.git 
-cd Laravel-Lucid-Architecutre-Stater-Kit
+git clone git@github.com:Rion91/student_management.git
+cd student_management
 cp .env.example .env #Don't forget to configure your .env file
 composer install
 
 
 php artisan key:generate
 php artisan migrate
-php artisan db:seed --class=ApplicationServiceSeeder
+php artisan db:seed 
 
 php artisan passport:install
 ```

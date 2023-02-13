@@ -20,6 +20,6 @@ class DeleteStudentFeature extends Feature
     {
         $this->run(DeleteStudentJob::class, ['studentId' => $this->studentId]);
 
-        return JsonResponder::success('Student information deleted.');
+        return JsonResponder::success('Student information has been deleted.');
     }
 }

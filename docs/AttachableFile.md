@@ -56,7 +56,7 @@ $user->save();
 ```
 
 
-Geting data from attached file
+Getting data from attached file
 
 ```php
 // Get the file from model
@@ -108,28 +108,6 @@ $avatar->getThumbUrl($width, $height, $options);
  * ]
  * @return string The URL to the generated thumbnail
  */
-
-// Student seeder
-//        $user = User::create([
-//            'name' => 'First Student',
-//            'email' => 'firststudent@gmail.com',
-//            'email_verified_at' => now(),
-//            'password' => config('onenex.admin_password'), // password
-//        ]);
-//        $user->syncRoles([RoleEnum::STUDENT->value]);
-//        Student::create([
-//            'user_id' => $user->id,
-//            'date_of_birth' => '2000-01-11',
-//            'mobile_number' => '09233456098',
-//            'identity_type' => StudentIdentityTypeEnum::NRC->value,
-//            'identity_number' => '097521',
-//            'gender' => GenderEnum::MALE->value,
-//            'nationality' => 'Myanmar',
-//            'academic_field' => AcademicFieldMajor::COMPUTER_SCIENCE->value,
-//            'contact_person' => 'mom',
-//            'contact_number' => '09876325123',
-//            'address' => 'test address',
-//            'status' => UserStatusEnum::ACTIVE->value,
-//        ]);
+      ]);
 ```
 
