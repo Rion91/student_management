@@ -15,7 +15,7 @@ enum ValidatorEnum: string
         ];
     }
 
-    case IMAGE = 'image|mimes:jpeg,png,jpg,gif,svg|max:20480';
+    case IMAGE = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:20480';
     case DOCUMENT = 'file|mimes:ppt,pptx,doc,docx,pdf,xls,xlsx|max:204800';
 
     public static function COUNTRY_CODE(): array

@@ -1,5 +1,8 @@
 Lucid work flow
 
+### IMPORTANT
+- You will need to register your every service of you lucid app with your desired configurations to the lucid_application_providers array of the following config.
+[config/core.php](./config/core.php).
 ```php
 //Create a new Service
 lucid make:service students 

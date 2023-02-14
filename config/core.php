@@ -34,6 +34,12 @@ return [
             'force_required' => true,
             'active' => true,
         ],
+        [
+            'provider' => \App\Services\Users\Providers\UsersServiceProvider::class,
+            'description' => 'Users Service',
+            'force_required' => true,
+            'active' => true,
+        ],
 
     ],
 

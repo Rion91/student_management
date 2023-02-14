@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Domains\Students\Jobs;
+namespace App\Domains\User\Jobs;
 
-use App\Data\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Lucid\Units\Job;
 
-class IndexStudentJob extends Job
+class IndexUserJob extends Job
 {
     /**
      * Create a new job instance.
@@ -29,15 +29,17 @@ class IndexStudentJob extends Job
         $perPage = $request->query('per_page');
 
         $search = $request->query('search');
-        $searchableFields = ['gender', 'mobile_number', 'contact_person', 'contact_number', 'address'];
+        $searchableFields = ['name', 'email'];
 
         $order = $request->query('order') ?? [['column' => 'created_at', 'order' => 'desc']];
         $sortableFields = [
+            'name',
             'created_at' => 'created_at',
-            'date_of_birth' => 'date_of_birth',
         ];
 
-        $query = Student::recent();
+        $query = User::whereHas('roles', function ($query) {
+            $query->where('name', '!=', 'student');
+        });
 
         return $query->purifySortingQuery($order, $sortableFields)->search($searchableFields, $search)->purifyPaginationQuery($perPage, $page);
     }
