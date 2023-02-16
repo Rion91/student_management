@@ -84,7 +84,7 @@ class User extends Authenticatable
     protected function avatar(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $this->avatar->url ?? 'https://ui-avatars.com/api/?name='.$this->name,
+            get: fn ($value) => $this->avatar ? $this->avatar->url : 'https://ui-avatars.com/api/?name='.$this->name,
         );
     }
 

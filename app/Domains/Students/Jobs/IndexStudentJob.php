@@ -37,7 +37,7 @@ class IndexStudentJob extends Job
             'date_of_birth' => 'date_of_birth',
         ];
 
-        $query = Student::recent();
+        $query = Student::with('user')->recent();
 
         return $query->purifySortingQuery($order, $sortableFields)->search($searchableFields, $search)->purifyPaginationQuery($perPage, $page);
     }

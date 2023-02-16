@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => config('onenex.super_admin_password'), // password
+            'password' => config('onenex.admin_password'), // password
             'remember_token' => Str::random(10),
         ];
     }
