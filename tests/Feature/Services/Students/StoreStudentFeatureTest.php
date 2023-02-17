@@ -18,7 +18,7 @@ class StoreStudentFeatureTest extends TestCase
             'Accept' => 'application/json',
             'X-Requested-With' => 'XMLHttpRequest',
         ])->json('POST', '/api/students', [
-            'name' => fake()->name,
+            'name' => 'test name',
             'email' => 'test.feature@gmail.com',
             'password' => 'password',
             'confirm_password' => 'password',
@@ -36,7 +36,7 @@ class StoreStudentFeatureTest extends TestCase
             'avatar' => '',
         ])->assertStatus(200);
 
-        User::whereEmail('test.feature@gmail.com')->forceDelete();
+        User::whereName('test name')->forceDelete();
         Student::whereIdentityNumber('378492')->forceDelete();
     }
 }
