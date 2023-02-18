@@ -40,6 +40,12 @@ return [
             'force_required' => true,
             'active' => true,
         ],
+        [
+            'provider' => \App\Services\Instructors\Providers\InstructorsServiceProvider::class,
+            'description' => 'Instructors Service',
+            'force_required' => true,
+            'active' => true,
+        ],
 
     ],
 
@@ -60,6 +66,18 @@ return [
         'detail-student',
         'update-student',
         'delete-student',
+
+        'index-user',
+        'create-user',
+        'detail-user',
+        'update-user',
+        'delete-user',
+
+        'index-instructor',
+        'create-instructor',
+        'detail-instructor',
+        'update-instructor',
+        'delete-instructor',
 
         'manage-roles',
         'manage-permissions',
