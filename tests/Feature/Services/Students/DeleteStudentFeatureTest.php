@@ -14,10 +14,10 @@ class DeleteStudentFeatureTest extends TestCase
         $student = Student::factory()->create();
         $token = $user->createToken('Authentication Token')->accessToken;
         $this->withHeaders([
-            'Authorization' => 'Bearer ' . $token,
+            'Authorization' => 'Bearer '.$token,
             'Accept' => 'application/json',
             'X-Requested-With' => 'XMLHttpRequest',
-        ])->json('DELETE', '/api/students/' . $student->id)
+        ])->json('DELETE', '/api/students/'.$student->id)
             ->assertStatus(200);
     }
 }

@@ -14,10 +14,10 @@ class UpdateStudentFeatureTest extends TestCase
         $student = Student::factory()->create();
         $token = $user->createToken('Authentication Token')->accessToken;
         $this->withHeaders([
-            'Authorization' => 'Bearer ' . $token,
+            'Authorization' => 'Bearer '.$token,
             'Accept' => 'application/json',
             'X-Requested-With' => 'XMLHttpRequest',
-        ])->json('PUT', '/api/students/' . $student->id, [
+        ])->json('PUT', '/api/students/'.$student->id, [
             'name' => 'update name',
             'email' => 'edit.feature@gmail.com',
             'password' => 'password',
