@@ -4,6 +4,7 @@ namespace App\Services\Instructors\Http\Controllers;
 
 use App\Services\Instructors\Features\IndexInstructorFeature;
 use App\Services\Instructors\Features\ShowInstructorFeature;
+use App\Services\Instructors\Features\StoreInstructorFeature;
 use Lucid\Units\Controller;
 
 class InstructorController extends Controller
@@ -59,6 +60,7 @@ class InstructorController extends Controller
      */
     public function store()
     {
+        return $this->serve(StoreInstructorFeature::class);
     }
 
     /**

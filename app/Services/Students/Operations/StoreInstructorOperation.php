@@ -2,29 +2,28 @@
 
 namespace App\Services\Students\Operations;
 
-use App\Domains\Auth\Jobs\LoginJob;
-use App\Domains\Students\Jobs\StoreStudentJob;
+use App\Domains\Instructors\Jobs\StoreInstructorJob;
 use App\Domains\User\Jobs\StoreUserJob;
 use Illuminate\Support\Facades\DB;
 use Lucid\Units\Operation;
 
-class StoreStudentOperation extends Operation
+class StoreInstructorOperation extends Operation
 {
-    public array $userPayload;
+    const CONST_ACTIVE = 'ACTIVE';
 
-    public array $studentPayload;
+    private array $userPayload;
 
-    private const CONST_ACTIVE = 'ACTIVE';
+    private array $instructorPayload;
 
     /**
      * Create a new operation instance.
      *
      * @return void
      */
-    public function __construct($userPayload, $studentPayload)
+    public function __construct($userPayload, $instructorPayload)
     {
         $this->userPayload = $userPayload;
-        $this->studentPayload = $studentPayload;
+        $this->instructorPayload = $instructorPayload;
     }
 
     /**
@@ -36,19 +35,18 @@ class StoreStudentOperation extends Operation
     {
         DB::beginTransaction();
         try {
-            $response = $this->run(StoreUserJob::class, ['payload' => $this->userPayload, 'roleName' => 'student']);
+            $response = $this->run(StoreUserJob::class, ['payload' => $this->userPayload, 'roleName' => 'instructor']);
 
-            $this->studentPayload['user_id'] = $response->id;
-            $this->studentPayload['status'] = self::CONST_ACTIVE;
-            $this->run(StoreStudentJob::class, ['payload' => $this->studentPayload]);
+            $this->instructorPayload['user_id'] = $response->id;
+            $this->instructorPayload['status'] = self::CONST_ACTIVE;
+            $data = $this->run(StoreInstructorJob::class, ['payload' => $this->instructorPayload]);
 
-            $loginData = $this->run(LoginJob::class, ['payload' => $this->userPayload]);
-            if ($loginData) {
+            if ($data) {
                 DB::commit();
 
                 return [
                     'status' => 'success',
-                    'data' => $loginData,
+                    'data' => $data,
                 ];
             }
         } catch (\Throwable $throwable) {

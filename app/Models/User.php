@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Data\Models\File;
+use App\Data\Models\Instructor;
 use App\Data\Models\Student;
 use App\Helpers\StringHelper;
 use App\Traits\BasicAudit;
@@ -88,8 +89,13 @@ class User extends Authenticatable
         );
     }
 
-    public function students(): HasOne
+    public function student(): HasOne
     {
         return $this->hasOne(Student::class);
+    }
+
+    public function instructor(): HasOne
+    {
+        return $this->hasOne(Instructor::class);
     }
 }

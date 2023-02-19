@@ -37,7 +37,7 @@ class Instructor extends Model
     protected function avatar(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => optional($this->user)->avatar->url ?? 'https://ui-avatars.com/api/?name='.$this->user->name,
+            get: fn ($value) => optional($this->user->avatar)->url ?? 'https://ui-avatars.com/api/?name='.$this->user->name,
         );
     }
 }

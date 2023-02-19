@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Domains\Students\Jobs;
+namespace App\Domains\Instructors\Jobs;
 
-use App\Data\Models\Student;
+use App\Data\Models\Instructor;
 use App\Helpers\ImageSave;
 use Lucid\Units\Job;
 
-class StoreStudentJob extends Job
+class StoreInstructorJob extends Job
 {
-    public array $payload;
+    private array $payload;
 
     /**
      * Create a new job instance.
@@ -27,11 +27,11 @@ class StoreStudentJob extends Job
      */
     public function handle(): object
     {
-        $student = Student::create($this->payload);
+        $instructor = Instructor::create($this->payload);
         if (! empty($this->payload['avatar'])) {
-            ImageSave::avatarSave($student->user, $this->payload['avatar']);
+            ImageSave::avatarSave($instructor->user, $this->payload['avatar']);
         }
 
-        return $student;
+        return $instructor;
     }
 }

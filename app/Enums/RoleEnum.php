@@ -8,5 +8,5 @@ enum RoleEnum: string
 
     case STUDENT = 'student';
 
-    case INSTRUCTOR = 'instructors';
+    case INSTRUCTOR = 'instructor';
 }
