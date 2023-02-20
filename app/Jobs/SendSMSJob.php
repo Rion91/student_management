@@ -14,11 +14,11 @@ class SendSMSJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public string $to;
+    private string $to;
 
-    public string $message;
+    private string $message;
 
-    public string|null $sender;
+    private string|null $sender;
 
     /**
      * Create a new job instance.

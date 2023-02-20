@@ -21,6 +21,9 @@ class SMS
     }
 
     /**
+     * @param $driver
+     * @return void
+     *
      * @throws Exception
      */
     private function setDriver($driver): void

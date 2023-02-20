@@ -4,12 +4,12 @@ namespace App\Services\Authorization\Features;
 
 use App\Domains\Authorization\Jobs\IndexRoleJob;
 use App\Helpers\JsonResponder;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Lucid\Units\Feature;
 
 class IndexRoleFeature extends Feature
 {
-    public function handle(Request $request)
+    public function handle(): JsonResponse
     {
         $roles = $this->run(IndexRoleJob::class);
 

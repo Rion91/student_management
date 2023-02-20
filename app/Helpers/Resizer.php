@@ -188,7 +188,7 @@ class Resizer
     /**
      * getOrientation receives the image's exif orientation
      *
-     * @param  \Symfony\Component\HttpFoundation\File\File  $file
+     * @param  FileObj  $file
      * @return int|null
      */
     protected function getOrientation($file)
@@ -512,10 +512,12 @@ class Resizer
     /**
      * openImage opens a file, detect its mime-type and create an image resource from it
      *
-     * @param  \Symfony\Component\HttpFoundation\File\File  $file File instance
-     * @return mixed
+     * @param  FileObj  $file File instance
+     * @return bool|\GdImage
+     *
+     * @throws Exception
      */
-    protected function openImage($file)
+    protected function openImage(FileObj $file): bool|\GdImage
     {
         $filePath = $file->getPathname();
 

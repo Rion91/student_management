@@ -17,18 +17,18 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 trait Attachable
 {
-    public static $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'];
+    private static array $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'];
 
     /**
      * data is a local file name or an instance of an uploaded file,
      * objects of the UploadedFile class.
      */
-    public $data = null;
+    private object|null $data = null;
 
     /**
      * @var array autoMimeTypes
      */
-    protected $autoMimeTypes = [
+    protected array $autoMimeTypes = [
         'jpg' => 'image/jpeg',
         'jpeg' => 'image/jpeg',
         'png' => 'image/png',
@@ -853,13 +853,11 @@ trait Attachable
 
     /**
      * getPartitionDirectory generates a partition for the file
-     * return /ABC/DE1/234 for an name of ABCDE1234.
+     * return /ABC/DE1/234 for a name of ABCDE1234.
      *
-     * @param  Attachable  $attachable
-     * @param  string  $styleName
-     * @return mixed
+     * @return string
      */
-    protected function getPartitionDirectory()
+    protected function getPartitionDirectory(): string
     {
         return implode('/', array_slice(str_split($this->disk_name, 3), 0, 3)).'/';
     }

@@ -14,11 +14,11 @@ class WebBasicAuthMiddleware
      *
      * @param  Request  $request
      * @param  Closure  $next
-     * @return Response|mixed
+     * @return Response
      *
      * @throws BindingResolutionException
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         $authenticationHasPassed = false;
 

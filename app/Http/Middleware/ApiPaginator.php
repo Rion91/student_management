@@ -3,7 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 
 class ApiPaginator
@@ -11,17 +13,17 @@ class ApiPaginator
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse) $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @param  Request  $request
+     * @param \Closure(Request): (Response|RedirectResponse) $next
+     * @return Response|RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
         $response = $next($request);
 
         $data = $response->getData(true);
 
-        if ($request->get('per_page') != 'ALL') {
+        if ($request->get('per_page') !== 'ALL') {
             $slice = Arr::only($data['data'], ['current_page', 'data', 'per_page', 'total']);
         } else {
             $slice['current_page'] = 1;

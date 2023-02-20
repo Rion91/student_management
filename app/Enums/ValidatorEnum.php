@@ -2,8 +2,6 @@
 
 namespace App\Enums;
 
-use Illuminate\Validation\Rules\Password;
-
 enum ValidatorEnum: string
 {
     public static function PASSWORD_RULE(): array

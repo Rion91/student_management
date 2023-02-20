@@ -18,7 +18,7 @@ class StoreInstructorFeature extends Feature
                 'instructorPayload' => $request->except(['name', 'email', 'password']),
             ]
         );
-        if ($response['status'] == 'success') {
+        if ($response['status'] === 'success') {
             return JsonResponder::success('Successfully creating a instructor!', $response['data']);
         }
 

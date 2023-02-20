@@ -18,7 +18,7 @@ class StoreStudentFeature extends Feature
                 'studentPayload' => $request->except(['name', 'email', 'password']),
             ]
         );
-        if ($response['status'] == 'success') {
+        if ($response['status'] === 'success') {
             return JsonResponder::success('Successfully registering a student!', $response['data']);
         }
 
