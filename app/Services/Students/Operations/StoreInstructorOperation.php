@@ -36,26 +36,18 @@ class StoreInstructorOperation extends Operation
         DB::beginTransaction();
         try {
             $response = $this->run(StoreUserJob::class, ['payload' => $this->userPayload, 'roleName' => 'instructor']);
-
             $this->instructorPayload['user_id'] = $response->id;
             $this->instructorPayload['status'] = self::CONST_ACTIVE;
             $data = $this->run(StoreInstructorJob::class, ['payload' => $this->instructorPayload]);
-
             if ($data) {
                 DB::commit();
 
-                return [
-                    'status' => 'success',
-                    'data' => $data,
-                ];
+                return ['status' => 'success', 'data' => $data];
             }
         } catch (\Throwable $throwable) {
             DB::rollBack();
 
-            return [
-                'status' => 'fail',
-                'data' => $throwable->getMessage(),
-            ];
+            return ['status' => 'fail', 'data' => $throwable->getMessage()];
         }
 
         return [];

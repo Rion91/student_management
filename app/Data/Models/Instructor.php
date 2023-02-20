@@ -5,7 +5,6 @@ namespace App\Data\Models;
 use App\Models\User;
 use App\Traits\BasicAudit;
 use App\Traits\HasAttachable;
-use App\Traits\RecentRecords;
 use App\Traits\SnowflakeID;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Instructor extends Model
 {
-    use HasFactory,SoftDeletes, BasicAudit, SnowflakeID, RecentRecords, HasAttachable;
+    use HasFactory,SoftDeletes, BasicAudit, SnowflakeID, HasAttachable;
 
     protected $fillable = [
         'user_id',

@@ -15,7 +15,6 @@ class RememberApplicationServiceJob extends Job
      */
     public function __construct()
     {
-        //
     }
 
     /**

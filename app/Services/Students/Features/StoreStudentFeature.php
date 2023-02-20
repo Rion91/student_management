@@ -12,7 +12,8 @@ class StoreStudentFeature extends Feature
 {
     public function handle(StoreStudentRequest $request): JsonResponse
     {
-        $response = $this->run(StoreStudentOperation::class,
+        $response = $this->run(
+            StoreStudentOperation::class,
             [
                 'userPayload' => $request->only(['name', 'email', 'password']),
                 'studentPayload' => $request->except(['name', 'email', 'password']),

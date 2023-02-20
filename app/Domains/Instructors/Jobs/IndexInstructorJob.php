@@ -15,7 +15,6 @@ class IndexInstructorJob extends Job
      */
     public function __construct()
     {
-        //
     }
 
     /**

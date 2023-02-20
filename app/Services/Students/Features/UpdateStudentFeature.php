@@ -19,7 +19,8 @@ class UpdateStudentFeature extends Feature
 
     public function handle(UpdateStudentRequest $request): JsonResponse
     {
-        $response = $this->run(UpdateStudentOperation::class,
+        $response = $this->run(
+            UpdateStudentOperation::class,
             [
                 'studentId' => $this->studentId,
                 'userPayload' => $request->only(['name', 'email', 'password']),

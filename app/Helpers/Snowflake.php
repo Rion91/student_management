@@ -163,10 +163,8 @@ class Snowflake
     public function parse(int $id): array
     {
         $id = decbin($id);
-
         $datacenterIdLeftShift = self::WORKER_ID_BITS + self::SEQUENCE_BITS;
         $timestampLeftShift = self::DATACENTER_ID_BITS + self::WORKER_ID_BITS + self::SEQUENCE_BITS;
-
         $binaryTimestamp = substr($id, 0, -$timestampLeftShift);
         $binarySequence = substr($id, -self::SEQUENCE_BITS);
         $binaryWorkerId = substr($id, -$datacenterIdLeftShift, self::WORKER_ID_BITS);

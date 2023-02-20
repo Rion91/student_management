@@ -15,12 +15,12 @@ class IndexStudentJob extends Job
      */
     public function __construct()
     {
-        //
     }
 
     /**
      * Execute the job.
      *
+     * @param  Request  $request
      * @return object
      */
     public function handle(Request $request): object
@@ -37,7 +37,7 @@ class IndexStudentJob extends Job
             'date_of_birth' => 'date_of_birth',
         ];
 
-        $query = Student::with('user')->recent();
+        $query = Student::with('user');
 
         return $query->purifySortingQuery($order, $sortableFields)->search($searchableFields, $search)->purifyPaginationQuery($perPage, $page);
     }

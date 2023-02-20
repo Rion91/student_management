@@ -10,10 +10,19 @@ use Lucid\Units\Operation;
 
 class UpdateStudentOperation extends Operation
 {
+    /**
+     * @var string studentId
+     */
     private string $studentId;
 
+    /**
+     * @var array userPayload
+     */
     private array $userPayload;
 
+    /**
+     * @var array studentPayload
+     */
     private array $studentPayload;
 
     /**

@@ -15,7 +15,6 @@ class RenewApplicationServiceInCacheJob extends Job
      */
     public function __construct()
     {
-        //
     }
 
     /**

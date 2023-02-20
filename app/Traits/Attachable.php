@@ -17,6 +17,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 trait Attachable
 {
+    /**
+     * @var array imageExtensions
+     */
     private static array $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'];
 
     /**
@@ -427,21 +430,17 @@ trait Attachable
      * ]
      * @return string The URL to the generated thumbnail
      */
-    public function getThumb($width, $height, $options = [])
+    public function getThumb(int $width, int $height, array $options = []): string
     {
         if (! $this->isImage() || ! $this->hasFile($this->disk_name)) {
             return $this->getPath();
         }
-
         $width = (int) $width;
         $height = (int) $height;
-
         $options = $this->getDefaultThumbOptions($options);
-
         $thumbFile = $this->getThumbFilename($width, $height, $options);
         $thumbPath = $this->getDiskPath($thumbFile);
         $thumbPublic = $this->getPath($thumbFile);
-
         if (! $this->hasFile($thumbFile)) {
             try {
                 if ($this->isLocalStorage()) {

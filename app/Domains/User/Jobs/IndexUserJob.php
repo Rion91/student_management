@@ -15,12 +15,12 @@ class IndexUserJob extends Job
      */
     public function __construct()
     {
-        //
     }
 
     /**
      * Execute the job.
      *
+     * @param  Request  $request
      * @return object
      */
     public function handle(Request $request): object

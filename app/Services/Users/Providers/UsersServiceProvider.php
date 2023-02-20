@@ -21,7 +21,7 @@ class UsersServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->loadMigrationsFrom([
             realpath(__DIR__.'/../database/migrations'),
@@ -33,7 +33,7 @@ class UsersServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(BroadcastServiceProvider::class);
@@ -46,7 +46,7 @@ class UsersServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerResources()
+    protected function registerResources(): void
     {
         // Translation must be registered ahead of adding lang namespaces
         $this->app->register(TranslationServiceProvider::class);
