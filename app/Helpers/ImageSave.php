@@ -13,7 +13,7 @@ class ImageSave
                 $model->avatar->delete();
             }
 
-            return $model->avatar = (new File)->fromPost($image);
+            return $model->avatar = (new File())->fromPost($image);
         }
 
         return null;

@@ -41,8 +41,7 @@ class LoginJob extends Job
                 'access_token' => $user->createToken('Authentication Token')->accessToken,
                 'user' => $user->makeHidden(['permissions', 'roles'])->append(['allowed_permissions']),
             ];
-        } else {
-            throw new UnauthorizedException('Wrong Credentials');
         }
+        throw new UnauthorizedException('Wrong Credentials');
     }
 }

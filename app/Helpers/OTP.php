@@ -17,7 +17,7 @@ class OTP
 
     private int $ttl;
 
-    public function __construct($recipient, $ttl = 6000)
+    public function __construct($recipient, $ttl = 60)
     {
         $this->recipient = $recipient;
         $this->ttl = $ttl;
@@ -27,7 +27,6 @@ class OTP
 
     public function generateForRecipient(): void
     {
-        //TODO Control ttl from application settings later
         $this->otp = NumberHelper::getRandomNumber();
 
         $cacheKey = $this->cachePrefix.$this->recipient;
@@ -42,7 +41,7 @@ class OTP
     public function sendViaSMSPOH($message = null, $sender = null): void
     {
         if (! $message) {
-            $message = "Your OTP number is $this->otp";
+            $message = "Your OTP number is {$this->otp}";
         }
 
         SendSMSJob::dispatch($this->recipient, $message, $sender)->onQueue('mobile_otp');

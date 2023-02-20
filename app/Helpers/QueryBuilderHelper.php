@@ -60,7 +60,7 @@ class QueryBuilderHelper
                 return $searchableFields->map(function ($field) use ($keyword, $builder, $searchableFields) {
                     $method = $searchableFields->first() === $field ? 'where' : 'orWhere';
 
-                    return $builder->{$method}($field, 'LIKE', "%$keyword%");
+                    return $builder->{$method}($field, 'LIKE', "%{$keyword}%");
                 });
             });
         });

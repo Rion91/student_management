@@ -9,7 +9,7 @@ use Lucid\Units\Operation;
 
 class StoreInstructorOperation extends Operation
 {
-    const CONST_ACTIVE = 'ACTIVE';
+    private const CONST_ACTIVE = 'ACTIVE';
 
     private array $userPayload;
 

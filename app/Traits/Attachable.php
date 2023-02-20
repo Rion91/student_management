@@ -20,7 +20,7 @@ trait Attachable
     public static $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'];
 
     /**
-     * @var mixed data is a local file name or an instance of an uploaded file,
+     * data is a local file name or an instance of an uploaded file,
      * objects of the UploadedFile class.
      */
     public $data = null;
@@ -157,9 +157,9 @@ trait Attachable
     {
         if ($this->isLocalStorage()) {
             return asset('storage/app'.$this->getPath());
-        } else {
-            return $this->getDisk()->url($this->getPath());
         }
+
+        return $this->getDisk()->url($this->getPath());
         // return url('storage/app' . $this->getPath());
     }
 
@@ -464,9 +464,9 @@ trait Attachable
         $path = $this->getThumb($width, $height, $options);
         if ($this->isLocalStorage()) {
             return asset($path);
-        } else {
-            return $this->getDisk()->url($path);
         }
+
+        return $this->getDisk()->url($path);
     }
 
     /**
@@ -517,7 +517,7 @@ trait Attachable
      * is necessary to simplify things and ensure the correct file permissions are given
      * to the local files.
      */
-    protected function makeThumbLocal($thumbFile, $thumbPath, $width, $height, $options)
+    protected function makeThumbLocal($thumbPath, $width, $height, $options)
     {
         $rootPath = $this->getLocalRootPath();
         $filePath = $rootPath.'/'.$this->getDiskPath();
@@ -699,11 +699,9 @@ trait Attachable
         }
 
         // Cache remote storage results for performance increase
-        $result = Cache::rememberForever($this->getCacheKey($filePath), function () use ($filePath) {
+        return Cache::rememberForever($this->getCacheKey($filePath), function () use ($filePath) {
             return $this->storageCmd('exists', $filePath);
         });
-
-        return $result;
     }
 
     /**
@@ -791,8 +789,8 @@ trait Attachable
     protected function copyLocalToStorage($localPath, $storagePath)
     {
         return $this->isPublic()
-        ? $this->getDisk()->put($storagePath, FileBase::get($localPath))
-        : $this->getDisk()->put($storagePath, FileBase::get($localPath), 'public');
+            ? $this->getDisk()->put($storagePath, FileBase::get($localPath))
+            : $this->getDisk()->put($storagePath, FileBase::get($localPath), 'public');
     }
 
     //
@@ -806,7 +804,7 @@ trait Attachable
     {
         $root = '/';
         $environment = App::environment();
-        if (App::environment() != 'production') {
+        if (App::environment() !== 'production') {
             $root .= $environment;
         }
 

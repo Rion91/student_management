@@ -31,8 +31,8 @@ enum ValidatorEnum: string
             }
 
             return ['required', 'regex:'.REGEXEnum::MOBILE_NUMBER->value, 'max:11', 'unique:users'];
-        } else {
-            return ['required', 'regex:'.REGEXEnum::MOBILE_NUMBER->value, 'max:11'];
         }
+
+        return ['required', 'regex:'.REGEXEnum::MOBILE_NUMBER->value, 'max:11'];
     }
 }

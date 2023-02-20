@@ -10,9 +10,9 @@ use Lucid\Units\Operation;
 
 class StoreStudentOperation extends Operation
 {
-    public array $userPayload;
+    private array $userPayload;
 
-    public array $studentPayload;
+    private array $studentPayload;
 
     private const CONST_ACTIVE = 'ACTIVE';
 
@@ -46,18 +46,12 @@ class StoreStudentOperation extends Operation
             if ($loginData) {
                 DB::commit();
 
-                return [
-                    'status' => 'success',
-                    'data' => $loginData,
-                ];
+                return ['status' => 'success', 'data' => $loginData];
             }
         } catch (\Throwable $throwable) {
             DB::rollBack();
 
-            return [
-                'status' => 'fail',
-                'data' => $throwable->getMessage(),
-            ];
+            return ['status' => 'fail', 'data' => $throwable->getMessage()];
         }
 
         return [];

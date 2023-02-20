@@ -38,31 +38,17 @@ class UpdateStudentOperation extends Operation
         DB::beginTransaction();
         try {
             $student = Student::whereId($this->studentId)->first();
-            $u = $this->run(UpdateUserJob::class,
-                [
-                    'userId' => $student->user_id,
-                    'payload' => $this->userPayload,
-                ]);
-            $response = $this->run(UpdateStudentJob::class,
-                [
-                    'studentId' => $this->studentId,
-                    'payload' => $this->studentPayload,
-                ]);
+            $this->run(UpdateUserJob::class, ['userId' => $student->user_id, 'payload' => $this->userPayload]);
+            $response = $this->run(UpdateStudentJob::class, ['studentId' => $this->studentId, 'payload' => $this->studentPayload]);
             if ($response) {
                 DB::commit();
 
-                return [
-                    'status' => 'success',
-                    'data' => $response,
-                ];
+                return ['status' => 'success', 'data' => $response];
             }
         } catch (\Throwable $throwable) {
             DB::rollBack();
 
-            return [
-                'status' => 'fail',
-                'data' => $throwable->getMessage(),
-            ];
+            return ['status' => 'fail', 'data' => $throwable->getMessage()];
         }
 
         return [];

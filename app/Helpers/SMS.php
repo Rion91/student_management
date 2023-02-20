@@ -27,7 +27,7 @@ class SMS
     {
         if ($driver) {
             if (collect(config('sms.drivers'))->contains($driver)) {
-                throw new Exception("Driver for sms, $driver is not currently supported.");
+                throw new Exception("Driver for sms, {$driver} is not currently supported.");
             }
             $this->driver = $driver;
         } else {
@@ -40,15 +40,14 @@ class SMS
      */
     public function sendViaSMSPOH($to, $message, $sender = null)
     {
-        $baseUrl = config("sms.drivers.$this->driver.base_url");
-        $token = config("sms.drivers.$this->driver.token");
+        $baseUrl = config("sms.drivers.{$this->driver}.base_url");
+        $token = config("sms.drivers.{$this->driver}.token");
         $sender = config('sms.sender');
-
         try {
             $response = $this->httpClient
-                ->request('POST', "$baseUrl/send", [
+                ->request('POST', "{$baseUrl}/send", [
                     'headers' => [
-                        'Authorization' => "Bearer $token",
+                        'Authorization' => "Bearer {$token}",
                     ],
                     'json' => [
                         'to' => $to,

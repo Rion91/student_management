@@ -75,7 +75,7 @@ class Snowflake
     public function makeSequenceId(int $currentTime, int $max = self::MAX_SEQUENCE): int
     {
         if ($this->lastTimestamp === $currentTime) {
-            $this->sequence = $this->sequence + 1;
+            $this->sequence = +1;
 
             return $this->sequence;
         }

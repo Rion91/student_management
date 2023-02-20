@@ -3,19 +3,22 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class WebBasicAuthMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  Request  $request
+     * @param  Closure  $next
+     * @return Response|mixed
      *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws BindingResolutionException
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $authenticationHasPassed = false;
 

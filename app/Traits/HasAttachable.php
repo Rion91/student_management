@@ -13,12 +13,12 @@ trait HasAttachable
 
     public function getAttachOne()
     {
-        return isset($this->attachOne) ? $this->attachOne : [];
+        return $this->attachOne ?? [];
     }
 
     public function getAttachMany()
     {
-        return isset($this->attachMany) ? $this->attachMany : [];
+        return $this->attachMany ?? [];
     }
 
     public function attachables()
@@ -30,7 +30,8 @@ trait HasAttachable
     {
         if (array_key_exists($key, $this->getAttachOne())) {
             return $this->getAttachable($key);
-        } elseif (array_key_exists($key, $this->getAttachMany())) {
+        }
+        if (array_key_exists($key, $this->getAttachMany())) {
             return $this->getAttachables($key);
         }
 
@@ -51,10 +52,12 @@ trait HasAttachable
     {
         if (array_key_exists($key, $this->getAttachOne())) {
             return $this->setAttachable($key, $value);
-        } elseif (array_key_exists($key, $this->getAttachMany())) {
+        }
+        if (array_key_exists($key, $this->getAttachMany())) {
             return $this->setAttachables($key, $value);
         }
-        parent::setAttribute($key, $value);
+
+        return parent::setAttribute($key, $value);
     }
 
     public function setAttachable($key, $value)
@@ -74,7 +77,8 @@ trait HasAttachable
     {
         if ($value && is_array($value)) {
             return $this->createAttachMany($key, $value);
-        } elseif ($value && get_class($value) == FileModel::class) {
+        }
+        if ($value && get_class($value) === FileModel::class) {
             return $this->createAttachMany($key, [$value]);
         }
     }

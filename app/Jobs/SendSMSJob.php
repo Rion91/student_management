@@ -41,6 +41,6 @@ class SendSMSJob implements ShouldQueue
      */
     public function handle()
     {
-        (new SMS)->sendViaSMSPOH($this->to, $this->message, $this->sender);
+        (new SMS())->sendViaSMSPOH($this->to, $this->message, $this->sender);
     }
 }

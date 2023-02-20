@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //Passport::tokensExpireIn(now()->addDays(15));
         //Passport::refreshTokensExpireIn(now()->addDays(30));
-        // TODO control the ttl from application settings later
+        //control the ttl from application settings later
         Passport::personalAccessTokensExpireIn(now()->addMonths());
     }
 
