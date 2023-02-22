@@ -20,7 +20,8 @@ class UpdateApplicationServiceFeature extends Feature
 
     public function handle(UpdateApplicationServiceRequest $request)
     {
-        $this->run(UpdateApplicationServiceJob::class,
+        $this->run(
+            UpdateApplicationServiceJob::class,
             ['applicationServiceId' => $this->applicationServiceId, 'payload' => $request->all()]);
 
         $this->run(RenewApplicationServiceInCacheJob::class);

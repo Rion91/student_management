@@ -25,7 +25,8 @@ class UpdateStudentFeature extends Feature
                 'studentId' => $this->studentId,
                 'userPayload' => $request->only(['name', 'email', 'password']),
                 'studentPayload' => $request->except(['name', 'email', 'password']),
-            ]);
+            ]
+        );
 
         if ($response['status'] === 'success') {
             return JsonResponder::success('Student information has been updated successfully!');

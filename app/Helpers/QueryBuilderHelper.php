@@ -86,7 +86,8 @@ class QueryBuilderHelper
             );
         }
 
-        return $builder->when($page && $perPage,
+        return $builder->when(
+            $page && $perPage,
             fn (Builder $builder) => $builder->paginate(perPage: $perPage, page: $page)->appends(app('request')->query()),
             fn (Builder $builder) => $builder->get()
         );
