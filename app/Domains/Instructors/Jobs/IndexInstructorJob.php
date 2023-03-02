@@ -20,9 +20,10 @@ class IndexInstructorJob extends Job
     /**
      * Execute the job.
      *
-     * @return void
+     * @param  Request  $request
+     * @return object
      */
-    public function handle(Request $request)
+    public function handle(Request $request): object
     {
         $page = $request->get('page');
         $perPage = $request->get('per_page');

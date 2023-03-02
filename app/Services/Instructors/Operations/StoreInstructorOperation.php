@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Students\Operations;
+namespace App\Services\Instructors\Operations;
 
 use App\Domains\Instructors\Jobs\StoreInstructorJob;
 use App\Domains\User\Jobs\StoreUserJob;

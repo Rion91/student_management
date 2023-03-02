@@ -4,7 +4,7 @@ namespace App\Services\Instructors\Features;
 
 use App\Domains\Instructors\Requests\StoreInstructorRequest;
 use App\Helpers\JsonResponder;
-use App\Services\Students\Operations\StoreInstructorOperation;
+use App\Services\Instructors\Operations\StoreInstructorOperation;
 use Illuminate\Http\JsonResponse;
 use Lucid\Units\Feature;
 

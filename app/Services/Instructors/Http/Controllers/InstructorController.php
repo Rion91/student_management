@@ -5,6 +5,7 @@ namespace App\Services\Instructors\Http\Controllers;
 use App\Services\Instructors\Features\IndexInstructorFeature;
 use App\Services\Instructors\Features\ShowInstructorFeature;
 use App\Services\Instructors\Features\StoreInstructorFeature;
+use App\Services\Instructors\Features\UpdateInstructorFeature;
 use Lucid\Units\Controller;
 
 class InstructorController extends Controller
@@ -64,7 +65,7 @@ class InstructorController extends Controller
     }
 
     /**
-     * Store Instructor
+     * Update Instructor
      *
      * @group Instructors
      *
@@ -72,20 +73,21 @@ class InstructorController extends Controller
      *
      * @urlParam id required The id of the Instructor.
      *
-     * @bodyParam name string required The name for creating instructor. Example: Instructor Name
-     * @bodyParam email string required The email for creating instructor. Example: instructor@gmail.com
-     * @bodyParam password string required The password for creating instructor. Example: password
-     * @bodyParam mobile_number string required The mobile number for creating instructor. Example: 09987456123
-     * @bodyParam date_of_birth date required The date of birth for creating instructor. Example, yyyy-mm-dd Example: 1990-01-01
-     * @bodyParam identity_type enum required The identity type for creating instructor. Example, NRC and PASSPORT Example: NRC
-     * @bodyParam identity_number string required The identity number for creating instructor. Example: 786523
-     * @bodyParam gender string required The gender for creating instructor. Example, MALE, FEMALE and PREFER NOT TO SAY Example: MALE
-     * @bodyParam speciality string required The speciality for creating instructor. Example, Myanmar Example: Science
-     * @bodyParam address string required The address field for creating instructor. Example: No 1, test street, Yangon, Myanmar
-     * @bodyParam avatar file optional The image for creating instructor.
+     * @bodyParam name string required The name for update instructor. Example: Instructor Name
+     * @bodyParam email string required The email for update instructor. Example: instructor@gmail.com
+     * @bodyParam password string required The password for update instructor. Example: password
+     * @bodyParam mobile_number string required The mobile number for update instructor. Example: 09987456123
+     * @bodyParam date_of_birth date required The date of birth for update instructor. Example, yyyy-mm-dd Example: 1990-01-01
+     * @bodyParam identity_type enum required The identity type for update instructor. Example, NRC and PASSPORT Example: NRC
+     * @bodyParam identity_number string required The identity number for update instructor. Example: 786523
+     * @bodyParam gender string required The gender for update instructor. Example, MALE, FEMALE and PREFER NOT TO SAY Example: MALE
+     * @bodyParam speciality string required The speciality for update instructor. Example, Myanmar Example: Science
+     * @bodyParam address string required The address field for update instructor. Example: No 1, test street, Yangon, Myanmar
+     * @bodyParam avatar file optional The image for update instructor.
      */
     public function update($instructor)
     {
+        return $this->serve(UpdateInstructorFeature::class, ['instructorId' => $instructor]);
     }
 
     /**
