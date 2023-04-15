@@ -2,6 +2,7 @@
 
 namespace App\Services\Instructors\Http\Controllers;
 
+use App\Services\Instructors\Features\DeleteInstructorFeature;
 use App\Services\Instructors\Features\IndexInstructorFeature;
 use App\Services\Instructors\Features\ShowInstructorFeature;
 use App\Services\Instructors\Features\StoreInstructorFeature;
@@ -101,5 +102,6 @@ class InstructorController extends Controller
      */
     public function destroy($instructor)
     {
+        return $this->serve(DeleteInstructorFeature::class, ['instructorId' => $instructor]);
     }
 }
